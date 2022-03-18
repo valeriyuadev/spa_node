@@ -14,10 +14,12 @@ initialisation
         
 Run
     Client
-        ng serve --port 8001
+        1 - cd ./Client
+        2 - ng serve --port 8001
 
     Server
-        npm run dev  (or npm run start)
+        1 - cd ./Server
+        2 - npm run dev (or npm run start)
 
-Open url 
+Open url in the browser
     http://localhost:8001
