@@ -1,0 +1,17 @@
+.login-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.login-container .login-field {
+  margin-right: 10px
+}
+
+.login-container label {
+  color: #fff;
+}
+
+.login-container .clear-form-group-margin-bottom {
+  margin-bottom:  0rem !important;
+}

@@ -1,0 +1,67 @@
+<div class=" row">
+  <!-- search -->
+  <div class="col-md-8">
+    <div>
+      <button (click)="searchFormToggle()" class="btn btn-primary">Search form - {{ searcBtnTitle }}</button>
+      &nbsp;
+      <button (click)="sortFormShow = !sortFormShow" class="btn btn-primary">Sort form</button>
+    </div>
+
+    <app-tutorial-search
+      *ngIf="this.searcFormShow"
+      (onSearchEvent)="onSearchStart($event)"
+      (onSearchResetEvent)="onSearchReset()"
+    ></app-tutorial-search>
+
+    <div *ngIf="sortFormShow" class="sort-panel">
+      <div>
+        Sort (
+        <input [(ngModel)]="sortParams.direction" [value]="sort.desc" (change)="onSortStart()" type="radio"  name="direction" selected > Desc
+        &nbsp;
+        <input [(ngModel)]="sortParams.direction" [value]="sort.asc" (change)="onSortStart()"  name="direction" type="radio"> Asc
+        )
+      </div>
+
+      <div>
+        <input [(ngModel)]="sortParams.params"   [value]="sort.id"     (change)="onSortStart()" type="radio"  name="sortFields" >Id
+      &nbsp; <input  [(ngModel)]="sortParams.params"  [value]="sort.author" (change)="onSortStart()"  type="radio" name="sortFields" >Author
+      &nbsp; <input  [(ngModel)]="sortParams.params"  [value]="sort.title"  (change)="onSortStart()"  type="radio" name="sortFields">Cathegoy
+      &nbsp; <input  [(ngModel)]="sortParams.params"  [value]="sort.createdAt" (change)="onSortStart()"  type="radio" name="sortFields">Date change
+      </div>
+    </div>
+  </div>
+  <!-- /search -->
+
+  <div class="col-md-6">
+    <h4>Tutorials List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let tutorial of tutorials; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTutorial(tutorial, i)"
+      >
+        <h4>Cathegory: {{ getCathegory(tutorial.cathegory) }}</h4>
+        <div><span class="author">{{ tutorial.author }}</span> ({{ getDate(tutorial.createdAt) }})</div>
+        <div>{{ tutorial.title }}</div>
+        <div>status - {{ tutorial.published ? 'published' : 'pending' }}</div>
+        <div *ngIf="isImageSet(tutorial)">
+          <img src="{{tutorial.image}}" alt="wrong url of image" class="tutorial-image">
+        </div>
+      </li>
+    </ul>
+
+    <!-- button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+      Remove All
+    </button -->
+  </div>
+
+  <div class="col-md-6">
+    <app-tutorial-details
+      [viewMode]         = "true"
+      [currentTutorial]  = "selectedTutorial"
+
+      (forceRefreshListEvent)="myRefreshList()"
+    ></app-tutorial-details>
+  </div>
+</div>

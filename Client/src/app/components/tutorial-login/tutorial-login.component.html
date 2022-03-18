@@ -1,0 +1,31 @@
+<div class="submit-form  pull-right svv">
+  <div *ngIf="! isLogined" class="login-container" >
+    <div class="form-group login-field">
+      <label for="userLogin">Login</label>
+      <input type="text" class="form-control" id="userLogin" required name="title"
+        [(ngModel)]="userLogin"
+      />
+    </div>
+
+    <div class="form-group login-field">
+      <label for="userPassword">Password</label>
+      <input class="form-control" id="userPassword" required name="description"
+        [(ngModel)]="userPassword"
+      />
+    </div>
+
+    <div class="form-group login-field">
+      <button (click)="login()" class="btn btn-success">login</button>
+    </div>
+  </div>
+
+  <div *ngIf="isLogined" class="login-container">
+    <div class="login-field">
+      <label>Hi - <b>{{ userName }}</b></label>
+    </div>
+    <div class=" login-field">
+      <span>&nbsp;&nbsp;&nbsp;</span>
+      <button class="btn btn-success" (click)="logout()">logout</button>
+    </div>
+  </div>
+</div>

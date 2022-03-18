@@ -1,0 +1,94 @@
+<div class="panel panel-info search-panel" >
+  <div class="panel-heading">
+
+    <div class="input-group">
+      <label class="spacer"> <input [(ngModel)]="searchParams.intersect"   [value]="1" type="radio" name="intersect" >AND </label>
+      &nbsp; <label class="spacer"> <input [(ngModel)]="searchParams.intersect"  checked [value]="0" type="radio"  name="intersect" >OR </label>
+  </div>
+
+  <div class="input-group mb-3">
+      <input id="title" name="title" type="text" class="form-control"
+             placeholder="Search by title"
+             [(ngModel)]="searchParams.title"
+      />
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon1">Search by title</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <input id="description" name="description" type="text" class="form-control"
+             placeholder="Search by description"
+             [(ngModel)]="searchParams.description"
+      />
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">Search by description</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <input id="author" name="author" type="text" class="form-control"
+             placeholder="Search by author"
+             [(ngModel)]="searchParams.author"
+      />
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon4">Search by author</span>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <select class="form-control" id="cathegory" name="cathegory"
+              [(ngModel)]="searchParams.cathegory"
+      >
+        <option *ngFor="let workout of getCathegories(); let i=index"
+                [ngValue]="i"
+                [selected]="6 == i"
+        >
+          {{ workout }}
+        </option>
+      </select>
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon3">Search by cathegory</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label class="spacer"> <input [(ngModel)]="searchParams.published"   [value]="-1" type="radio"  name="published" >No mater </label>
+      &nbsp; <label class="spacer"> <input  [(ngModel)]="searchParams.published"   [value]="1" type="radio" name="published" >Published </label>
+      &nbsp; <label class="spacer"> <input  [(ngModel)]="searchParams.published"   [value]="0" type="radio" name="published">Pending </label>
+    </div>
+
+    <div class="input-group">
+      <label class="spacer"> <input [(ngModel)]="searchParams.hasImage"   [value]="-1" type="radio"  name="hasImage" >No mater </label>
+      &nbsp; <label class="spacer"> <input  [(ngModel)]="searchParams.hasImage"   [value]="1" type="radio" name="hasImage" >Has image </label>
+      &nbsp; <label class="spacer"> <input  [(ngModel)]="searchParams.hasImage"   [value]="0" type="radio" name="hasImage">No image </label>
+    </div>
+
+    <div class="text-right" data-toggle="buttons">
+      <button (click)="searchStart()" class="btn btn-info">Search</button>
+      &nbsp;
+      <button (click)="searchReset()" class="btn btn-info" title="Reset and hide search form">Reset</button>
+    </div>
+  </div>
+</div>
+<!--
+  <div class="input-group mb-3">
+
+      <label for="title"></label>
+      <input id="title" name="title" type="text" class="form-control"
+             placeholder="Search by title"
+             [(ngModel)]="title"
+      />
+
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="clickSearch()"
+      >
+        Search
+      </button>
+    </div>
+
+  </div>
+-->

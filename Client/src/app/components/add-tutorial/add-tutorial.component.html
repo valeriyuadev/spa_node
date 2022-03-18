@@ -1,0 +1,56 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="! submited">
+      <div class="form-group">
+        <label for="cathegory">Cathegory</label>
+
+        <select class="form-control" id="cathegory" name="cathegory"
+          [(ngModel)]="tutorial.cathegory"
+        >
+          <option *ngFor="let cathegory of cathegoriesService.getCathegories(); let i=index"
+            [ngValue]="i"
+          >
+            {{ cathegory }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" name="author" required
+               [(ngModel)]="tutorial.author"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required
+               [(ngModel)]="tutorial.title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input class="form-control" id="description" name="description" required
+               [(ngModel)]="tutorial.description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Image url</label>
+        <input class="form-control" id="image" name="image" required
+               [(ngModel)]="tutorial.image"
+        />
+      </div>
+
+      <div class="text-center">
+        <button (click)="saveTutorial()" class="btn btn-success">Save</button>
+      </div>
+    </div><!-- /if -->
+
+    <div *ngIf="submited">
+      <h4>Tutorial was submited successfully!</h4>
+      <button class="btn btn-success" (click)="newTutorial()">Add</button>
+    </div>
+  </div>
+</div>
